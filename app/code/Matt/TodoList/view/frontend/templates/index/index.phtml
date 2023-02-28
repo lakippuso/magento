@@ -1,0 +1,20 @@
+<?php
+    $title = $block->getTitle();
+    $todos = $block->getAllTodos()->getData();
+
+
+
+    echo "<table border=1><tr align=center><th>Favorite</th><th>Description</th></tr>";
+    foreach ($todos as $data) {
+        echo "<tr align=center>";
+            echo "<td>".$data['todo_id']."</td>";
+            echo "<td>".$data['title']."</td>";
+            echo "<td>".$data['status']."</td>";
+        echo "</tr>";
+    }
+    echo "</table>";
+?>
+
+<h1><?= $title;?></h1>
+<h1><?= "testing"?></h1>
+

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">  
+    <menu>
+        <add id="Matt_TodoList::todolist" title="Todolist" module="Matt_TodoList" sortOrder="51" resource="Matt_TodoList::todolist"/>
+        <add id="Matt_TodoList::view" title="Manage Todolist" module="Matt_TodoList" sortOrder="10" action="todolist/home/index" resource="Matt_TodoList::view" parent="Matt_TodoList::todolist"/>
+    </menu>
+</config>

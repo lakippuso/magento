@@ -1,0 +1,46 @@
+#!/bin/bash
+echo "||=========================||"
+echo "||[1] Full Exec           ||"
+echo "||[2] Upgrade             ||"
+echo "||[3] Upgrade and Deploy  ||"
+echo "||[4] Clean               ||"
+echo "||=========================||"
+echo "Enter Choice: "
+read choice
+if(($choice == "1")); then
+echo "Are you sure?: "
+read choice2
+if(($choice2=="y"));then
+ 
+    echo "Started Execution..."
+    bin/magento setup:di:compile
+    bin/magento setup:upgrade
+    bin/magento setup:static-content:deploy -f
+    bin/magento cache:clean
+    bin/magento cache:flush
+    bin/magento indexer:reindex
+    echo "Done Execution..."
+    clear
+fi
+elif(($choice =="2"));then
+bin/magento setup:upgrade --keep-generated
+bin/magento cache:clean
+bin/magento cache:flush
+clear
+elif(($choice =="3"));then
+bin/magento setup:upgrade
+bin/magento setup:static-content:deploy -f
+bin/magento cache:clean
+bin/magento cache:flush
+clear
+elif(($choice =="4"));then
+printf "\033[0;32mStarted Cleaning..."
+bin/magento cache:clean
+printf "\033[0;36mStarted Flushing..."
+bin/magento cache:flush
+printf "Done Execution..."
+clear
+else
+printf "\033[91mThis is red text\033[0m";
+clear
+fi
